@@ -9,11 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.recall.databinding.ActivityLogInBinding
 
 class LogIn : AppCompatActivity() {
-
+    //TODO: Connect to database
     private lateinit var binding: ActivityLogInBinding
     private var email: EditText? = null
     private var password: EditText? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +24,9 @@ class LogIn : AppCompatActivity() {
         email = binding.emailEV
         password = binding.passwordEV
 
-        signUp.setOnClickListener { goToSignUp() }
+        signUp.setOnClickListener { goToQuestionnaire() }
 
-        binding.button.setOnClickListener {
+        binding.save.setOnClickListener {
             if(validate())goHome()
         }
     }
@@ -35,15 +34,14 @@ class LogIn : AppCompatActivity() {
 
     private fun validate(): Boolean {
         if (email?.text.toString().isEmpty() || password?.text.toString().isEmpty()) {
-            Toast.makeText(this, "Please fill out all your information", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Fill Out Your Information", Toast.LENGTH_SHORT).show()
             return false
         }
         return true
     }
 
-
-    private fun goToSignUp() {
-        val intent = Intent(this, SignUp::class.java)
+    private fun goToQuestionnaire() {
+        val intent = Intent(this, Questionnaire::class.java)
         startActivity(intent)
         finish()
     }
@@ -53,5 +51,4 @@ class LogIn : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
 }

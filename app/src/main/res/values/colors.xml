@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="PersianBlue">#4041b4</color>
-    <color name="VioletBlue">#4647B5</color>
-    <color name="UltraViolet">#545584</color>
-    <color name="TropicalIndigo">#9C9CDB</color>
-    <color name="Magnolia">#F0EFFE</color>
-    <color name="GhostWhite">#FAFAFE</color>
-    <color name="SpaceCadet">#2a2b42</color>
-    <color name="black">#FF000000</color>
-    <color name="transparent_sixty">#99000000</color>
+
     <color name="white">#FFFFFFFF</color>
-    <color name="anti_flash_white">#EBEBEB</color>
-    <color name="off_white">#c2c2c2</color>
+    <color name="black">#000000</color>
+    <color name="primary">#36388C</color>
+    <color name="secondary">#9C9CDB</color>
+    <color name="UIOnly">#FD4912 </color>
+
+
 
 </resources>

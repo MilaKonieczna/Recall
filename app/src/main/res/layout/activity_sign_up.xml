@@ -5,45 +5,67 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/UltraViolet"
+    android:background="@color/primary"
     android:fontFamily="monospace"
     tools:context=".SignUp">
 
-    <ImageView
-        android:id="@+id/Image"
-        android:layout_width="210dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/signup"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/usernameL"
+        android:id="@+id/NameL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="64dp"
-        android:textColorHint="@color/SpaceCadet"
-        app:boxStrokeColor="@color/TropicalIndigo"
-        app:hintTextColor="@color/SpaceCadet"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/white"
+        app:hintTextAppearance="@style/CustomHintTextAppearance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Image">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="80dp"
+        app:boxBackgroundColor="@color/primary"
+        app:boxStrokeErrorColor="@color/UIOnly"
+        tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/usernameEV"
+            android:id="@+id/nameEV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
-            android:background="@drawable/tile_white"
-            android:hint="@string/username"
+            android:hint="@string/name"
             android:inputType="text"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textCursorDrawable="@color/UltraViolet"/>
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/SurnameL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/white"
+        app:hintTextAppearance="@style/CustomHintTextAppearance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/NameL"
+        android:layout_marginTop="30dp"
+        app:boxBackgroundColor="@color/primary"
+        app:boxStrokeErrorColor="@color/UIOnly"
+        tools:ignore="MissingConstraints">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/surnameEV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:hint="@string/surname"
+        android:inputType="text"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -51,25 +73,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
-        app:boxStrokeColor="@color/TropicalIndigo"
-        app:hintTextColor="@color/SpaceCadet"
-        android:textColorHint="@color/SpaceCadet"
+        android:layout_marginTop="30dp"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/white"
+        app:hintTextAppearance="@style/CustomHintTextAppearance"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:boxStrokeErrorColor="@color/UIOnly"
+        app:boxBackgroundColor="@color/primary"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/usernameL">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailEV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/email"
-            android:background="@drawable/tile_white"
-            android:textColor="@color/black"
-            android:textColorHint="@color/white"
-            android:fontFamily="monospace"
-            android:textCursorDrawable="@color/UltraViolet"
-            android:inputType="textEmailAddress" />
+        app:layout_constraintTop_toBottomOf="@id/SurnameL">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/emailEV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:fontFamily="monospace"
+        android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -77,27 +101,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
-        app:boxStrokeColor="@color/TropicalIndigo"
-        app:hintTextColor="@color/SpaceCadet"
-        android:textColorHint="@color/SpaceCadet"
+        android:layout_marginTop="30dp"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/white"
+        app:hintTextAppearance="@style/CustomHintTextAppearance"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:boxStrokeErrorColor="@color/UIOnly"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailL"
         app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/SpaceCadet">
+        app:boxBackgroundColor="@color/primary"
+        app:passwordToggleTint="@color/white">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordEV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:background="@drawable/tile_white"
-            android:textColor="@color/black"
-            android:textColorHint="@color/white"
-            android:textCursorDrawable="@color/UltraViolet"
-            android:inputType="textPassword" />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/passwordEV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -105,28 +131,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
-        app:boxStrokeColor="@color/TropicalIndigo"
-        app:hintTextColor="@color/SpaceCadet"
-        android:textColorHint="@color/SpaceCadet"
+        android:layout_marginTop="30dp"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/white"
+        app:hintTextAppearance="@style/CustomHintTextAppearance"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:boxStrokeErrorColor="@color/UIOnly"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordL"
         app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/SpaceCadet">
+        app:boxBackgroundColor="@color/primary"
+        app:passwordToggleTint="@color/white">
 
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/repeatEV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/repeat_password"
-            android:textColor="@color/black"
-            android:background="@drawable/tile_white"
-            android:textColorHint="@color/white"
-            android:textCursorDrawable="@color/UltraViolet"
-            android:inputType="textPassword" />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/repeatEV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/repeat_password"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textColorHint="@color/white"
+        android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -135,9 +162,10 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:text="@string/register"
-        android:textColor="@color/GhostWhite"
+        android:textColor="@color/primary"
         android:textStyle="bold"
-        android:background="@drawable/tile_violet"
+        android:background="@color/white"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -149,12 +177,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="17sp"
+        android:textSize="20sp"
         android:text="@string/already_have_an_account_log_in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/save" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
