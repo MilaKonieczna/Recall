@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="340dp"
-        android:layout_height="600dp"
+        android:layout_height="620dp"
         android:background="@drawable/white_tile"
         android:orientation="vertical"
         android:layout_gravity="center"
@@ -29,22 +29,35 @@
             android:layout_marginTop="60dp"
             tools:ignore="ContentDescription" />
 
+        <Button
+            android:id="@+id/clue"
+            android:textAllCaps="false"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="start"
+            android:layout_marginTop="60dp"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="@color/primary"
+            android:text="@string/Clue"
+            android:textSize="20sp" />
+
         <EditText
             android:id="@+id/response"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginHorizontal="20dp"
+            android:layout_margin="20dp"
             android:hint="@string/name_object"
             android:textSize="20sp"
             tools:ignore="Autofill,TextFields" />
 
         <Button
             android:id="@+id/submit"
+            android:textAllCaps="false"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="textStart"
             android:backgroundTint="@color/primary"
             android:text="@string/submit"
             android:textSize="20sp" />

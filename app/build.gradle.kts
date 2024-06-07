@@ -26,7 +26,7 @@ android {
             )
         }
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
     compileOptions {
@@ -38,11 +38,13 @@ android {
     }
 }
 
-dependencies {
 
+
+dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.orgApacheCommonsText)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)

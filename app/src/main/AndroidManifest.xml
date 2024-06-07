@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Recall"
         tools:targetApi="31">
         <activity
+            android:name=".ScoreBNT"
+            android:exported="false" />
+        <activity
             android:name=".SST"
             android:exported="false" />
         <activity

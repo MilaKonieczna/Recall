@@ -4,19 +4,26 @@
 
     <item
         android:id="@+id/nav_bnt"
-        android:icon="@drawable/cards"
         app:showAsAction="ifRoom"
-        tools:ignore="MenuTitle" />
+        android:title="@string/bnt" />
 
     <item
         android:id="@+id/nav_dst"
-        android:icon="@drawable/keyboard"
         app:showAsAction="ifRoom"
-        tools:ignore="MenuTitle" />
+        android:title="@string/dst" />
 
     <item
         android:id="@+id/nav_sst"
-        android:icon="@drawable/choice"
         app:showAsAction="ifRoom"
-        tools:ignore="MenuTitle" />
+        android:title="@string/sst" />
+
+    <item
+        android:id="@+id/nav_new"
+        app:showAsAction="ifRoom"
+        android:title="@string/sst" />
+
+    <item
+        android:id="@+id/nav_res"
+        app:showAsAction="ifRoom"
+        android:title="@string/results" />
 </menu>
