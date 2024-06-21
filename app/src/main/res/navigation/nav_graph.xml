@@ -7,32 +7,32 @@
 
     <fragment
         android:id="@+id/nav_bnt"
-        android:name="com.example.recall.start.StartBNT"
+        android:name="com.example.recall.bnt.StartBNT"
         android:label="BNT"
 
         tools:layout="@layout/fragment_start_bnt" />
 
     <fragment
         android:id="@+id/nav_sst"
-        android:name="com.example.recall.start.StartSST"
+        android:name="com.example.recall.sst.StartSST"
         android:label="SST"
         tools:layout="@layout/fragment_start_sst" />
 
     <fragment
         android:id="@+id/nav_dst"
-        android:name="com.example.recall.start.StartDST"
+        android:name="com.example.recall.dst.StartDST"
         android:label="DST"
         tools:layout="@layout/fragment_start_dst" />
 
     <fragment
         android:id="@+id/nav_new"
-        android:name="com.example.recall.start.StartDST"
-        android:label="DST"
-        tools:layout="@layout/fragment_start_dst" />
+        android:name="com.example.recall.st.StartST"
+        android:label="ST"
+        tools:layout="@layout/fragment_start_st" />
 
     <fragment
         android:id="@+id/nav_res"
-        android:name="com.example.recall.PastResults"
+        android:name="com.example.recall.results.PastResults"
         android:label="RES"
         tools:layout="@layout/fragment_past_results" />
 </navigation>

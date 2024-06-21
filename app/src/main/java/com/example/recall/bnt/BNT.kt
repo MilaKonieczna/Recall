@@ -1,4 +1,4 @@
-package com.example.recall
+package com.example.recall.bnt
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,9 +8,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.recall.data.bnt.DataBNT
-import com.example.recall.data.bnt.DrawingObject
-import com.example.recall.data.bnt.Response
+import com.example.recall.R
 import org.apache.commons.text.similarity.LevenshteinDistance
 import java.text.SimpleDateFormat
 import java.util.Date

@@ -16,7 +16,7 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="50dp"
         android:textStyle="bold"
-        android:text="@string/spatial_span_test" />
+        android:text="@string/scope_test" />
 
     <!-- TODO: M: Add a text to speech for description -->
     <!-- TODO: L: Add a text for instruction -->

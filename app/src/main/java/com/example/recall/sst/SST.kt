@@ -1,13 +1,17 @@
-package com.example.recall
+package com.example.recall.sst
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.Button
 import android.widget.GridLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.example.recall.R
 import kotlin.random.Random
 
+@Suppress("DEPRECATION")
 class SST : AppCompatActivity() {
 
     private lateinit var gridLayout: GridLayout
@@ -25,6 +29,7 @@ class SST : AppCompatActivity() {
         startButton = findViewById(R.id.startButton)
 
         startButton.setOnClickListener {
+            startButton.visibility = View.GONE
             startTest(true)
         }
 
@@ -32,6 +37,10 @@ class SST : AppCompatActivity() {
             val button = gridLayout.getChildAt(i) as Button
             button.setOnClickListener {
                 handleButtonPress(i + 1)
+                button.alpha = 0.5f
+                Handler().postDelayed({
+                    button.alpha = 1.0f
+                }, 200)
             }
         }
     }
@@ -49,10 +58,10 @@ class SST : AppCompatActivity() {
         showSequence()
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun showSequence() {
-        startButton.visibility = View.GONE
         var delay: Long = 500
-        sequence.forEachIndexed { index, value ->
+        sequence.forEachIndexed { _, value ->
             Handler().postDelayed({
                 highlightButton(value, true)
             }, delay)
@@ -87,8 +96,9 @@ class SST : AppCompatActivity() {
                 generateNextSequence()
             }
         } else {
-            startButton.visibility = View.VISIBLE
+            val intent = Intent(this, ScoreSST::class.java)
+            intent.putExtra("SCORE", score)
+            startActivity(intent)
         }
     }
-
 }

@@ -13,28 +13,34 @@
         android:theme="@style/Theme.Recall"
         tools:targetApi="31">
         <activity
-            android:name=".ScoreBNT"
+            android:name=".st.ST"
             android:exported="false" />
         <activity
-            android:name=".SST"
+            android:name=".bnt.ScoreBNT"
             android:exported="false" />
         <activity
-            android:name=".BNT"
+            android:name=".sst.ScoreSST"
             android:exported="false" />
         <activity
-            android:name=".DST"
+            android:name=".sst.SST"
             android:exported="false" />
         <activity
-            android:name=".Questionnaire"
+            android:name=".bnt.BNT"
             android:exported="false" />
         <activity
-            android:name=".Home"
+            android:name=".dst.DST"
             android:exported="false" />
         <activity
-            android:name=".SignUp"
+            android:name=".access.Questionnaire"
             android:exported="false" />
         <activity
-            android:name=".LogIn"
+            android:name=".main.Home"
+            android:exported="false" />
+        <activity
+            android:name=".access.SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".access.LogIn"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

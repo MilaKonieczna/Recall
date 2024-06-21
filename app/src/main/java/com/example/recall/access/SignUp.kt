@@ -1,4 +1,4 @@
-package com.example.recall
+package com.example.recall.access
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,13 +7,16 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.recall.R
+import com.example.recall.main.Snackbar
+
+//import com.google.firebase.auth.FirebaseAuth
+//import com.google.firebase.firestore.FirebaseFirestore
 
 class SignUp : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
+   //private lateinit var auth: FirebaseAuth
+    //private lateinit var db: FirebaseFirestore
 
     private var email: EditText? = null
     private var name: EditText? = null
@@ -28,8 +31,8 @@ class SignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
+      //  auth = FirebaseAuth.getInstance()
+       // db = FirebaseFirestore.getInstance()
 
         age = intent.getStringExtra("AGE")
         nationality = intent.getStringExtra("NATIONALITY")
@@ -98,7 +101,10 @@ class SignUp : AppCompatActivity() {
         }
 
         if (!capital) {
-            Snackbar.showSnackbar(findViewById(android.R.id.content), "Password needs a Capital Letter")
+            Snackbar.showSnackbar(
+                findViewById(android.R.id.content),
+                "Password needs a Capital Letter"
+            )
             return false
         } else if (!number) {
             Snackbar.showSnackbar(findViewById(android.R.id.content), "Password needs a Number")
@@ -106,7 +112,10 @@ class SignUp : AppCompatActivity() {
         }
 
         if (password?.text?.toString() != repeat?.text?.toString()) {
-            Snackbar.showSnackbar(findViewById(android.R.id.content), "The passwords aren't the same!")
+            Snackbar.showSnackbar(
+                findViewById(android.R.id.content),
+                "The passwords aren't the same!"
+            )
             return false
         }
         Snackbar.showSnackbar(findViewById(android.R.id.content), "Success")
@@ -117,7 +126,7 @@ class SignUp : AppCompatActivity() {
         val emailStr = email?.text.toString()
         val passwordStr = password?.text.toString()
 
-        auth.createUserWithEmailAndPassword(emailStr, passwordStr)
+    /*    auth.createUserWithEmailAndPassword(emailStr, passwordStr)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
@@ -126,7 +135,7 @@ class SignUp : AppCompatActivity() {
                     Log.e("SignUp", "Authentication failed: ${task.exception?.message}")
                     Snackbar.showSnackbar(findViewById(android.R.id.content), "Authentication failed.")
                 }
-            }
+            }*/
     }
 
     private fun saveUserData(uid: String?) {
@@ -144,7 +153,7 @@ class SignUp : AppCompatActivity() {
             "education" to education
         )
 
-        db.collection("users").document(uid)
+    /*    db.collection("users").document(uid)
             .set(user)
             .addOnSuccessListener {
                 Log.d("SignUp", "User data successfully saved")
@@ -153,7 +162,7 @@ class SignUp : AppCompatActivity() {
             .addOnFailureListener { e ->
                 Log.e("SignUp", "Failed to save user data: ${e.message}")
                 Snackbar.showSnackbar(findViewById(android.R.id.content), "Failed to save user data.")
-            }
+            }*/
     }
 
     private fun goToLogin() {

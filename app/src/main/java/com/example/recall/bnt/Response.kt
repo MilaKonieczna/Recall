@@ -1,4 +1,4 @@
-package com.example.recall.data.bnt
+package com.example.recall.bnt
 
 data class Response(
     val objectId: Int,

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary"
     android:fontFamily="monospace"
-    tools:context=".LogIn">
+    tools:context=".access.LogIn">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailL"

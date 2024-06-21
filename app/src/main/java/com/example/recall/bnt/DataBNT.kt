@@ -1,4 +1,4 @@
-package com.example.recall.data.bnt
+package com.example.recall.bnt
 
 import java.util.Date
 

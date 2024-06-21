@@ -1,9 +1,11 @@
-package com.example.recall
+package com.example.recall.access
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.recall.R
+import com.example.recall.main.Snackbar
 
 class Questionnaire : AppCompatActivity() {
 
@@ -36,7 +38,10 @@ class Questionnaire : AppCompatActivity() {
             val education = educationSpinner.selectedItem.toString()
 
             if (age.isEmpty() || nationality.isEmpty() || education.isEmpty()) {
-                Snackbar.showSnackbar(findViewById(android.R.id.content), "Please fill out all fields")
+                Snackbar.showSnackbar(
+                    findViewById(android.R.id.content),
+                    "Please fill out all fields"
+                )
             } else {
                 val intent = Intent(this, SignUp::class.java).apply {
                     putExtra("AGE", age)

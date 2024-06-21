@@ -237,4 +237,7 @@
     <string name="results">Results</string>
     <string name="repeat_sequence">Repeat Sequence</string>
     <string name="start_test">Start Test</string>
+    <string name="scope_test">Scope Test</string>
+    <string name="past_games">Past Games</string>
+    <string name="past_games1">Past Games:</string>
 </resources>

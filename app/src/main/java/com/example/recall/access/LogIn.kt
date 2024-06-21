@@ -1,16 +1,18 @@
-package com.example.recall
+package com.example.recall.access
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.recall.main.Home
+import com.example.recall.R
+import com.example.recall.main.Snackbar
 import com.example.recall.databinding.ActivityLogInBinding
-import com.google.firebase.auth.FirebaseAuth
 
 class LogIn : AppCompatActivity() {
     private lateinit var binding: ActivityLogInBinding
-    private lateinit var auth: FirebaseAuth
+  //  private lateinit var auth: FirebaseAuth
     private var email: EditText? = null
     private var password: EditText? = null
 
@@ -20,7 +22,7 @@ class LogIn : AppCompatActivity() {
         binding = ActivityLogInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = FirebaseAuth.getInstance()
+   //     auth = FirebaseAuth.getInstance()
 
         val signUp: TextView = findViewById(R.id.SignUpTV)
         email = binding.emailEV
@@ -29,9 +31,10 @@ class LogIn : AppCompatActivity() {
         signUp.setOnClickListener { goToQuestionnaire() }
 
         binding.save.setOnClickListener {
-            if (validate()) {
-                loginUser()
-            }
+           // if (validate()) {
+//                loginUser()
+            goHome()
+            //}
         }
     }
 
@@ -47,14 +50,14 @@ class LogIn : AppCompatActivity() {
         val emailStr = email?.text.toString()
         val passwordStr = password?.text.toString()
 
-        auth.signInWithEmailAndPassword(emailStr, passwordStr)
+      /*  auth.signInWithEmailAndPassword(emailStr, passwordStr)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     goHome()
                 } else {
                     Snackbar.showSnackbar(binding.root, "Authentication failed.")
                 }
-            }
+            }*/
     }
 
     private fun goToQuestionnaire() {

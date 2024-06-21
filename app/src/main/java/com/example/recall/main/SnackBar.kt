@@ -1,7 +1,8 @@
-package com.example.recall
+package com.example.recall.main
 
 import android.view.View
 import android.widget.TextView
+import com.example.recall.R
 import com.google.android.material.snackbar.Snackbar
 
 @Suppress("DEPRECATION")

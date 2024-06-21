@@ -1,9 +1,10 @@
-package com.example.recall
+package com.example.recall.bnt
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.recall.R
 
 class ScoreBNT : AppCompatActivity() {
 

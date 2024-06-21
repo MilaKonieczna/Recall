@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary"
     android:fontFamily="monospace"
-    tools:context=".SignUp">
+    tools:context=".access.SignUp">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/NameL"
