@@ -4,13 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.recall.databinding.ActivityLogInBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class LogIn : AppCompatActivity() {
-    //TODO: Connect to database
     private lateinit var binding: ActivityLogInBinding
+    private lateinit var auth: FirebaseAuth
     private var email: EditText? = null
     private var password: EditText? = null
 
@@ -20,6 +20,8 @@ class LogIn : AppCompatActivity() {
         binding = ActivityLogInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = FirebaseAuth.getInstance()
+
         val signUp: TextView = findViewById(R.id.SignUpTV)
         email = binding.emailEV
         password = binding.passwordEV
@@ -27,17 +29,32 @@ class LogIn : AppCompatActivity() {
         signUp.setOnClickListener { goToQuestionnaire() }
 
         binding.save.setOnClickListener {
-            if(validate())goHome()
+            if (validate()) {
+                loginUser()
+            }
         }
     }
 
-
     private fun validate(): Boolean {
         if (email?.text.toString().isEmpty() || password?.text.toString().isEmpty()) {
-            Toast.makeText(this, "Fill Out Your Information", Toast.LENGTH_SHORT).show()
+            Snackbar.showSnackbar(binding.root, "Fill Out Your Information")
             return false
         }
         return true
+    }
+
+    private fun loginUser() {
+        val emailStr = email?.text.toString()
+        val passwordStr = password?.text.toString()
+
+        auth.signInWithEmailAndPassword(emailStr, passwordStr)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    goHome()
+                } else {
+                    Snackbar.showSnackbar(binding.root, "Authentication failed.")
+                }
+            }
     }
 
     private fun goToQuestionnaire() {

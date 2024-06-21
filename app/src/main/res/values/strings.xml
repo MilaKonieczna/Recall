@@ -235,4 +235,6 @@
     <string name="spatial_span_test">Spatial Span Test</string>
     <string name="Clue">Clue</string>
     <string name="results">Results</string>
+    <string name="repeat_sequence">Repeat Sequence</string>
+    <string name="start_test">Start Test</string>
 </resources>

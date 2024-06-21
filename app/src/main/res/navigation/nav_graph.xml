@@ -9,6 +9,7 @@
         android:id="@+id/nav_bnt"
         android:name="com.example.recall.start.StartBNT"
         android:label="BNT"
+
         tools:layout="@layout/fragment_start_bnt" />
 
     <fragment

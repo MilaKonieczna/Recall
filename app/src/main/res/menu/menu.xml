@@ -5,25 +5,30 @@
     <item
         android:id="@+id/nav_bnt"
         app:showAsAction="ifRoom"
-        android:title="@string/bnt" />
+        android:title="@string/bnt"
+        android:titleTextColor="@android:color/white"/>
 
     <item
         android:id="@+id/nav_dst"
         app:showAsAction="ifRoom"
-        android:title="@string/dst" />
+        android:title="@string/dst"
+        android:titleTextColor="@android:color/white" />
 
     <item
         android:id="@+id/nav_sst"
         app:showAsAction="ifRoom"
-        android:title="@string/sst" />
+        android:title="@string/sst"
+        android:titleTextColor="@android:color/white"/>
 
     <item
         android:id="@+id/nav_new"
         app:showAsAction="ifRoom"
-        android:title="@string/sst" />
+        android:title="@string/sst"
+        android:titleTextColor="@android:color/white"/>
 
     <item
         android:id="@+id/nav_res"
         app:showAsAction="ifRoom"
-        android:title="@string/results" />
+        android:title="@string/results"
+        android:titleTextColor="@android:color/white"/>
 </menu>

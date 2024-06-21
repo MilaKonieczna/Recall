@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "283403620816",
+    "project_id": "recall-580f4",
+    "storage_bucket": "recall-580f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283403620816:android:8f7311ff90be0999a7e9d5",
+        "android_client_info": {
+          "package_name": "com.example.recall"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWVbjbehweAdCwSB2xTZZFS_X1IpB7ViY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

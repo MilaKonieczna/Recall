@@ -2,20 +2,25 @@ package com.example.recall
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignUp : AppCompatActivity() {
-    //TODO: Connect to database
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
+
     private var email: EditText? = null
     private var name: EditText? = null
     private var surname: EditText? = null
-    private  var age: String? = null
-    private  var nationality: String? = null
-    private  var education: String? = null
+    private var age: String? = null
+    private var nationality: String? = null
+    private var education: String? = null
     private var password: EditText? = null
     private var repeat: EditText? = null
 
@@ -23,11 +28,12 @@ class SignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
         age = intent.getStringExtra("AGE")
         nationality = intent.getStringExtra("NATIONALITY")
         education = intent.getStringExtra("EDUCATION")
-
-        val register: Button = findViewById(R.id.save)
 
         email = findViewById(R.id.emailEV)
         name = findViewById(R.id.nameEV)
@@ -35,49 +41,45 @@ class SignUp : AppCompatActivity() {
         password = findViewById(R.id.passwordEV)
         repeat = findViewById(R.id.repeatEV)
 
-        val logTv = findViewById<TextView>(R.id.LogTV)
-        logTv.setOnClickListener{
-            goToLogin()
+        val register: Button = findViewById(R.id.save)
+        register.setOnClickListener {
+            if (validate()) {
+                registerUser()
+            }
         }
 
-        register.setOnClickListener {
-            if (validate()) goToLogin()
-
+        val logTv = findViewById<TextView>(R.id.LogTV)
+        logTv.setOnClickListener {
+            goToLogin()
         }
     }
 
     private fun validate(): Boolean {
         if (name?.text.isNullOrBlank()) {
-            Toast.makeText(this, "Username is required",Toast.LENGTH_SHORT).show()
+            Snackbar.showSnackbar(findViewById(android.R.id.content), "Username is required")
             return false
         }
         if (surname?.text.isNullOrBlank()) {
-            Toast.makeText(this, "Username is required",Toast.LENGTH_SHORT).show()
+            Snackbar.showSnackbar(findViewById(android.R.id.content), "Surname is required")
             return false
         }
         if (email?.text.isNullOrBlank()) {
-            Toast.makeText(this, "Email is required",Toast.LENGTH_SHORT).show()
+            Snackbar.showSnackbar(findViewById(android.R.id.content), "Email is required")
             return false
         }
-        var monkey= false
-        for (char in email?.text.toString()){
-            if(char == '@'){
-                monkey = true
-                break
-            }
-        }
-        if (!monkey){
-            Toast.makeText(this, "Provide valid email",Toast.LENGTH_SHORT).show()
+        if (!email?.text.toString().contains("@")) {
+            Snackbar.showSnackbar(findViewById(android.R.id.content), "Provide valid email")
             return false
         }
         if (password?.text.isNullOrBlank()) {
-            Toast.makeText(this, "Password is required",Toast.LENGTH_SHORT).show()
+            Snackbar.showSnackbar(findViewById(android.R.id.content), "Password is required")
             return false
         }
         if (password!!.length() < 6) {
-            Toast.makeText(this, "Password too short",Toast.LENGTH_SHORT).show()
+            Snackbar.showSnackbar(findViewById(android.R.id.content), "Password too short")
             return false
         }
+
         var capital = false
         var number = false
         val numbers = setOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
@@ -96,19 +98,62 @@ class SignUp : AppCompatActivity() {
         }
 
         if (!capital) {
-            Toast.makeText(this, "Password needs a Capital Letter",Toast.LENGTH_LONG).show()
+            Snackbar.showSnackbar(findViewById(android.R.id.content), "Password needs a Capital Letter")
             return false
         } else if (!number) {
-            Toast.makeText(this, "Password needs a Number",Toast.LENGTH_LONG).show()
+            Snackbar.showSnackbar(findViewById(android.R.id.content), "Password needs a Number")
             return false
         }
 
-        if (!password?.text?.toString().equals(repeat?.text?.toString())) {
-            Toast.makeText(this, "The passwords aren't the same!",Toast.LENGTH_LONG).show()
+        if (password?.text?.toString() != repeat?.text?.toString()) {
+            Snackbar.showSnackbar(findViewById(android.R.id.content), "The passwords aren't the same!")
             return false
         }
-        Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()
+        Snackbar.showSnackbar(findViewById(android.R.id.content), "Success")
         return true
+    }
+
+    private fun registerUser() {
+        val emailStr = email?.text.toString()
+        val passwordStr = password?.text.toString()
+
+        auth.createUserWithEmailAndPassword(emailStr, passwordStr)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    saveUserData(user?.uid)
+                } else {
+                    Log.e("SignUp", "Authentication failed: ${task.exception?.message}")
+                    Snackbar.showSnackbar(findViewById(android.R.id.content), "Authentication failed.")
+                }
+            }
+    }
+
+    private fun saveUserData(uid: String?) {
+        if (uid == null) {
+            Log.e("SignUp", "User ID is null, cannot save user data")
+            return
+        }
+
+        val user = hashMapOf(
+            "name" to name?.text.toString(),
+            "surname" to surname?.text.toString(),
+            "email" to email?.text.toString(),
+            "age" to age,
+            "nationality" to nationality,
+            "education" to education
+        )
+
+        db.collection("users").document(uid)
+            .set(user)
+            .addOnSuccessListener {
+                Log.d("SignUp", "User data successfully saved")
+                goToLogin()
+            }
+            .addOnFailureListener { e ->
+                Log.e("SignUp", "Failed to save user data: ${e.message}")
+                Snackbar.showSnackbar(findViewById(android.R.id.content), "Failed to save user data.")
+            }
     }
 
     private fun goToLogin() {

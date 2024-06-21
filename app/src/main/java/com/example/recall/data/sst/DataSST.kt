@@ -5,6 +5,6 @@ data class DataSST(
     val spanTime: Float,
     val totalCorrect: Int,
     val totalErrors: Int,
-    val errorSentence: Int,
+    val errorSequence: Int,
     val errorSquare: Int
 )
