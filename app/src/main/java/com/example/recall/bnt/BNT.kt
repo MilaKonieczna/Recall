@@ -3,18 +3,21 @@ package com.example.recall.bnt
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.recall.R
+import com.example.recall.main.Snackbar
 import org.apache.commons.text.similarity.LevenshteinDistance
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
 class BNT : AppCompatActivity() {
+
+    private lateinit var rootView: View
 
     private lateinit var image: ImageView
     private lateinit var patientResponse: EditText
@@ -83,7 +86,6 @@ class BNT : AppCompatActivity() {
         DrawingObject(59, "rainbow", R.drawable.rainbow),
         DrawingObject(60, "star", R.drawable.star)
     ).shuffled()
-
     private val cues = listOf(
         Pair("apple", "fruit"),
         Pair("pencil", "something to write with"),
@@ -156,6 +158,8 @@ class BNT : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bnt)
 
+        rootView = findViewById(android.R.id.content)
+
         image = findViewById(R.id.image)
         patientResponse = findViewById(R.id.response)
         submit = findViewById(R.id.submit)
@@ -201,7 +205,7 @@ class BNT : AppCompatActivity() {
             currentDrawingIndex++
             loadNextDrawing()
         } else {
-            Toast.makeText(this, "Please enter a response", Toast.LENGTH_SHORT).show()
+            Snackbar.showSnackbar(rootView, "Please enter a response")
         }
     }
 
@@ -209,12 +213,9 @@ class BNT : AppCompatActivity() {
         cuesUsed += 1
         val currentDrawing = drawings[currentDrawingIndex]
         val matchingClue = cues.find { it.first == currentDrawing.name }
+        Snackbar.showSnackbar(rootView, matchingClue?.second ?: "No clue available")
 
-        if (matchingClue != null) {
-            Toast.makeText(this, matchingClue.second, Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "No clue available", Toast.LENGTH_SHORT).show()
-        }
+
     }
 
     private fun calculateScore() {
@@ -264,9 +265,6 @@ class BNT : AppCompatActivity() {
         }
         startActivity(intent)
     }
-
-    // TODO: set number of tests from MongoDB
-
 
     private fun isPhonemicError(response: String, correct: String): Boolean {
         val threshold = 2
