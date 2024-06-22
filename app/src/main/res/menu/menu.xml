@@ -1,40 +1,27 @@
-<menu xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/nav_bnt"
-        app:showAsAction="ifRoom"
-        android:title="@string/bnt"
-        android:textAppearance="@style/MenuItemTextStyle"
-        app:actionViewClass="android.widget.TextView"
-        />
+        android:icon="@drawable/polaroid"
+        android:title="@string/bnt" />
 
     <item
         android:id="@+id/nav_dst"
-        app:showAsAction="ifRoom"
-        android:title="@string/dst"
-        android:textAppearance="@style/MenuItemTextStyle"
-        app:actionViewClass="android.widget.TextView" />
+        android:icon="@drawable/number"
+        android:title="@string/dst" />
 
     <item
         android:id="@+id/nav_sst"
-        app:showAsAction="ifRoom"
-        android:title="@string/sst"
-        android:textAppearance="@style/MenuItemTextStyle"
-        app:actionViewClass="android.widget.TextView" />
+        android:icon="@drawable/memory"
+        android:title="@string/sst"/>
 
     <item
-        android:id="@+id/nav_new"
-        app:showAsAction="ifRoom"
-        android:title="@string/sst"
-        android:textAppearance="@style/MenuItemTextStyle"
-        app:actionViewClass="android.widget.TextView" />
+        android:id="@+id/nav_st"
+        android:icon="@drawable/colors"
+        android:title="@string/st" />
 
     <item
         android:id="@+id/nav_res"
-        app:showAsAction="ifRoom"
-        android:title="@string/results"
-        android:textAppearance="@style/MenuItemTextStyle"
-        app:actionViewClass="android.widget.TextView" />
+        android:icon="@drawable/past"
+        android:title="@string/results" />
 </menu>

@@ -5,41 +5,44 @@
         android:orientation="vertical"
         android:gravity="left|center_vertical"
         android:background="@color/primary"
-        tools:context=".dst.ScoreDST">
+        tools:context=".dst.ScoreDST"
+            tools:ignore="RtlHardcoded">
 
         <TextView
             android:id="@+id/spantime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:layout_marginStart="36px"
+            android:layout_marginStart="36dp"
             android:textColor="@color/white"
-            android:text="Span Time: " />
+            android:text="@string/span_time" />
 
         <TextView
             android:id="@+id/totalCorrect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:layout_marginStart="36px"
+            android:layout_marginStart="36dp"
             android:textColor="@color/white"
-            android:text="Total Correct: " />
+            android:text="@string/total_correct" />
 
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:layout_marginStart="36px"
+            android:layout_marginStart="36dp"
             android:textColor="@color/white"
-            android:text="Date: " />
+            android:text="@string/date" />
 
-        <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
-            android:layout_marginStart="150dp"
-            android:text="Back"
-            android:textColor="@color/primary"
-            android:textSize="24dp"/>
+                <Button
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="150dp"
+                    android:layout_marginStart="150dp"
+                    android:text="@string/back"
+                    android:textColor="@color/primary"
+                    android:textSize="24sp"/>
 
-</LinearLayout>
+        </LinearLayout>

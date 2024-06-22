@@ -240,4 +240,29 @@
     <string name="scope_test">Scope Test</string>
     <string name="past_games">Past Games</string>
     <string name="past_games1">Past Games:</string>
+    <string name="date">Date:</string>
+    <string name="back">Back</string>
+    <string name="cue_utilization">Cue Utilization:</string>
+    <string name="perseverative_errors">Perseverative Errors:</string>
+    <string name="semantic_errors">Semantic Errors:</string>
+    <string name="total_correct">Total Correct:</string>
+    <string name="total_errors">Total Errors:</string>
+    <string name="phonetic_errors">Phonetic Errors:</string>
+    <string name="span_time">Span Time:</string>
+    <string name="completed_sequences">Completed Sequences:</string>
+    <string name="st">ST</string>
+    <string name="stroop_test">Stroop test</string>
+    <string name="average_time">Average Time:</string>
+    <string name="correct_answers">Correct Answers:</string>
+    <string name="incorrect_answers">Incorrect Answers:</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+
 </resources>

@@ -22,6 +22,12 @@
             android:name=".sst.ScoreSST"
             android:exported="false" />
         <activity
+            android:name=".dst.ScoreDST"
+            android:exported="false" />
+        <activity
+            android:name=".st.ScoreST"
+            android:exported="false" />
+        <activity
             android:name=".sst.SST"
             android:exported="false" />
         <activity

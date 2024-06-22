@@ -4,34 +4,30 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.view.View
+import android.view.ViewTreeObserver
 import android.widget.Button
 import android.widget.GridLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.recall.R
+import kotlin.math.min
 import kotlin.random.Random
 
 @Suppress("DEPRECATION")
 class SST : AppCompatActivity() {
 
     private lateinit var gridLayout: GridLayout
-    private lateinit var startButton: Button
     private val sequence = mutableListOf<Int>()
     private var currentStep = 0
     private var score = 0
     private var isForward = true
+    private var spanTime = 0L
+    private var totalCorrect = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sst)
 
         gridLayout = findViewById(R.id.gridLayout)
-        startButton = findViewById(R.id.startButton)
-
-        startButton.setOnClickListener {
-            startButton.visibility = View.GONE
-            startTest(true)
-        }
 
         for (i in 0 until gridLayout.childCount) {
             val button = gridLayout.getChildAt(i) as Button
@@ -43,6 +39,19 @@ class SST : AppCompatActivity() {
                 }, 200)
             }
         }
+
+        gridLayout.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                gridLayout.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                val size = min(gridLayout.width, gridLayout.height)
+                val layoutParams = gridLayout.layoutParams
+                layoutParams.width = size
+                layoutParams.height = size
+                gridLayout.layoutParams = layoutParams
+            }
+        })
+
+        startTest(true)
     }
 
     private fun startTest(forward: Boolean) {
@@ -50,6 +59,7 @@ class SST : AppCompatActivity() {
         currentStep = 0
         score = 0
         isForward = forward
+        spanTime = System.currentTimeMillis() // Start timing
         generateNextSequence()
     }
 
@@ -92,12 +102,16 @@ class SST : AppCompatActivity() {
         if (number == expected) {
             currentStep++
             if (currentStep == sequence.size) {
+                totalCorrect++
                 score++
                 generateNextSequence()
             }
         } else {
-            val intent = Intent(this, ScoreSST::class.java)
-            intent.putExtra("SCORE", score)
+            val spanTimeInSeconds = (System.currentTimeMillis() - spanTime) / 1000
+            val intent = Intent(this, ScoreSST::class.java).apply {
+                putExtra("SpanTime", spanTimeInSeconds)
+                putExtra("totalCorrect", totalCorrect)
+            }
             startActivity(intent)
         }
     }

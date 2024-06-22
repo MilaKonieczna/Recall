@@ -6,23 +6,37 @@
     android:orientation="vertical"
     android:gravity="left|center_vertical"
     android:background="@color/primary"
-    tools:context=".sst.ScoreSST">
+    tools:context=".sst.ScoreSST"
+    tools:ignore="RtlHardcoded">
 
     <TextView
-        android:id="@+id/scoreTextView"
+        android:id="@+id/spantime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:layout_marginStart="36px"
+        android:layout_marginStart="36dp"
         android:textColor="@color/white"
-        android:text="Completed Sequences: 0" />
+        android:text="@string/span_time" />
 
-    <Button android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/totalCorrect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_marginStart="36dp"
+        android:textColor="@color/white"
+        android:text="@string/total_correct" />
+
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:layout_marginStart="150dp"
-        android:text="Back"
+        android:text="@string/back"
         android:textColor="@color/primary"
-        android:textSize="24dp"/>
+        android:textSize="24sp"/>
+
 
 </LinearLayout>

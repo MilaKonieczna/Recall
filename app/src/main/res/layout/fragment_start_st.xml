@@ -16,10 +16,8 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="50dp"
         android:textStyle="bold"
-        android:text="@string/scope_test" />
+        android:text="@string/stroop_test" />
 
-    <!-- TODO: M: Add a text to speech for description -->
-    <!-- TODO: L: Add a text for instruction -->
 
     <TextView
         android:id="@+id/instruction"

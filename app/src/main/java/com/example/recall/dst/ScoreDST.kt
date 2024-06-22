@@ -1,32 +1,37 @@
 package com.example.recall.dst
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.recall.R
+import com.example.recall.bnt.StartBNT
+import com.example.recall.main.Home
 
 class ScoreDST : AppCompatActivity() {
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_score_bnt)
+        setContentView(R.layout.activity_score_dst)
 
+        val spanTime = intent.getIntExtra("SpanTime", 0)
         val totalCorrect = intent.getIntExtra("totalCorrect", 0)
-        val totalErrors = intent.getIntExtra("totalErrors", 0)
-        val phoneticErrors = intent.getIntExtra("phoneticErrors", 0)
-        val semanticErrors = intent.getIntExtra("semanticErrors", 0)
-        val perseverativeErrors = intent.getIntExtra("perseverativeErrors", 0)
-        val cueUtilization = intent.getIntExtra("cueUtilization", 0)
         val date = intent.getStringExtra("date")
 
-        findViewById<TextView>(R.id.totalCorrectTextView).text = "Total Correct: $totalCorrect"
-        findViewById<TextView>(R.id.totalErrorsTextView).text = "Total Errors: $totalErrors"
-        findViewById<TextView>(R.id.phoneticErrorsTextView).text = "Phonetic Errors: $phoneticErrors"
-        findViewById<TextView>(R.id.semanticErrorsTextView).text = "Semantic Errors: $semanticErrors"
-        findViewById<TextView>(R.id.perseverativeErrorsTextView).text = "Perseverative Errors: $perseverativeErrors"
-        findViewById<TextView>(R.id.cueUtilizationTextView).text = "Cue Utilization: $cueUtilization"
-        findViewById<TextView>(R.id.dateTextView).text = "Date: $date"
+        findViewById<TextView>(R.id.spantime).text = "Cue Utilization: $spanTime s"
+        findViewById<TextView>(R.id.totalCorrect).text = "Total Correct: $totalCorrect"
+        findViewById<TextView>(R.id.date).text = "Date: $date"
+
+        findViewById<Button>(R.id.back).setOnClickListener {
+            val intent = Intent(this, Home::class.java).apply {
+                putExtra("fragmentToLoad", "StartDST")
+            }
+            startActivity(intent)
+            finish()
+        }
+
     }
 }

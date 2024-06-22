@@ -5,77 +5,80 @@
         android:orientation="vertical"
         android:gravity="left|center_vertical"
         android:background="@color/primary"
-        tools:context=".bnt.ScoreBNT">
+        tools:context=".bnt.ScoreBNT"
+            tools:ignore="RtlHardcoded">
 
         <TextView
-            android:id="@+id/totalCorrectTextView"
+            android:id="@+id/totalCorrect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:layout_marginStart="36px"
+            android:layout_marginStart="36dp"
             android:textColor="@color/white"
-            android:text="Total Correct: " />
+            android:text="@string/total_correct" />
 
         <TextView
-            android:id="@+id/totalErrorsTextView"
+            android:id="@+id/totalErrors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:layout_marginStart="36px"
+            android:layout_marginStart="36dp"
             android:textColor="@color/white"
-            android:text="Total Errors: " />
+            android:text="@string/total_errors" />
 
         <TextView
-            android:id="@+id/phoneticErrorsTextView"
+            android:id="@+id/phoneticErrors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:layout_marginStart="36px"
+            android:layout_marginStart="36dp"
             android:textColor="@color/white"
-            android:text="Phonetic Errors: " />
+            android:text="@string/phonetic_errors" />
 
         <TextView
-            android:id="@+id/semanticErrorsTextView"
+            android:id="@+id/semanticErrors"
             android:layout_width="wrap_content"
             android:textSize="24sp"
             android:textColor="@color/white"
-            android:layout_marginStart="36px"
+            android:layout_marginStart="36dp"
             android:layout_height="wrap_content"
-            android:text="Semantic Errors: " />
+            android:text="@string/semantic_errors" />
 
         <TextView
-            android:id="@+id/perseverativeErrorsTextView"
+            android:id="@+id/perseverativeErrors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:layout_marginStart="36px"
+            android:layout_marginStart="36dp"
             android:textColor="@color/white"
-            android:text="Perseverative Errors: " />
+            android:text="@string/perseverative_errors" />
 
         <TextView
-            android:id="@+id/cueUtilizationTextView"
+            android:id="@+id/cueUtilization"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:layout_marginStart="36px"
+            android:layout_marginStart="36dp"
             android:textColor="@color/white"
-            android:text="Cue Utilization: " />
+            android:text="@string/cue_utilization" />
 
         <TextView
-            android:id="@+id/dateTextView"
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:layout_marginStart="36px"
+            android:layout_marginStart="36dp"
             android:textColor="@color/white"
-            android:text="Date: " />
+            android:text="@string/date" />
 
-        <Button android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="150dp"
             android:layout_marginStart="150dp"
-            android:text="Back"
+            android:text="@string/back"
             android:textColor="@color/primary"
-            android:textSize="24dp"/>
+            android:textSize="24sp"/>
 
 </LinearLayout>

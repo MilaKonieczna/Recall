@@ -1,24 +1,26 @@
 package com.example.recall.st
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.recall.R
 
 class ST : AppCompatActivity() {
 
     private lateinit var textWord: TextView
-    private lateinit var buttonRed: Button
-    private lateinit var buttonGreen: Button
-    private lateinit var buttonBlue: Button
-    private lateinit var buttonYellow: Button
+    private lateinit var red: Button
+    private lateinit var green: Button
+    private lateinit var blue: Button
+    private lateinit var yellow: Button
+    private lateinit var black: Button
+    private lateinit var purple: Button
 
-    private val colors = listOf("Red", "Green", "Blue", "Yellow")
-    private val colorValues = listOf(Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW)
+    private val colors = listOf("Red", "Green", "Blue", "Yellow","Black","Purple")
+    private val colorValues = listOf(R.color.red, R.color.green,R.color.blue,R.color.yellow,R.color.black,R.color.purple)
     private val practiceTrials = 5
     private val totalTrials = 40
 
@@ -33,12 +35,14 @@ class ST : AppCompatActivity() {
         setContentView(R.layout.activity_st)
 
         textWord = findViewById(R.id.text_word)
-        buttonRed = findViewById(R.id.button_red)
-        buttonGreen = findViewById(R.id.button_green)
-        buttonBlue = findViewById(R.id.button_blue)
-        buttonYellow = findViewById(R.id.button_yellow)
+        red = findViewById(R.id.red)
+        green = findViewById(R.id.green)
+        blue = findViewById(R.id.blue)
+        yellow = findViewById(R.id.yellow)
+        black = findViewById(R.id.black)
+        purple = findViewById(R.id.purple)
 
-        val buttons = listOf(buttonRed, buttonGreen, buttonBlue, buttonYellow)
+        val buttons = listOf(red, green, yellow, black, blue, purple)
 
         buttons.forEach { button ->
             button.setOnClickListener {
@@ -61,9 +65,10 @@ class ST : AppCompatActivity() {
         }
 
         val word = colors.random()
-        val color = colorValues.random()
+        val colorResId = colorValues.random()
+        val textColor = ContextCompat.getColor(this, colorResId)
         textWord.text = word
-        textWord.setTextColor(color)
+        textWord.setTextColor(textColor)
 
         if (trialCount >= practiceTrials) {
             startTime = SystemClock.elapsedRealtime()
@@ -82,14 +87,18 @@ class ST : AppCompatActivity() {
         results.add(elapsedTime)
 
         val selectedColor = when (button.id) {
-            R.id.button_red -> Color.RED
-            R.id.button_green -> Color.GREEN
-            R.id.button_blue -> Color.BLUE
-            R.id.button_yellow -> Color.YELLOW
+            R.id.red -> R.color.red
+            R.id.green -> R.color.green
+            R.id.blue -> R.color.blue
+            R.id.yellow -> R.color.yellow
+            R.id.black -> R.color.black
+            R.id.purple -> R.color.purple
             else -> 0
         }
 
-        if (selectedColor == textWord.currentTextColor) {
+        val textColor = ContextCompat.getColor(this, selectedColor)
+
+        if (textColor == textWord.currentTextColor) {
             correctAnswers++
         } else {
             incorrectAnswers++
@@ -98,17 +107,12 @@ class ST : AppCompatActivity() {
         startNextTrial()
     }
 
+
     private fun showResults() {
         val averageTime = if (results.isNotEmpty()) results.average() else 0.0
-        val totalSequences = totalTrials
-        val correctSequences = correctAnswers
-        val incorrectSequences = incorrectAnswers
 
         val intent = Intent(this, ScoreST::class.java).apply {
             putExtra("averageTime", averageTime)
-            putExtra("totalSequences", totalSequences)
-            putExtra("correctSequences", correctSequences)
-            putExtra("incorrectSequences", incorrectSequences)
             putExtra("correctAnswers", correctAnswers)
             putExtra("incorrectAnswers", incorrectAnswers)
         }
