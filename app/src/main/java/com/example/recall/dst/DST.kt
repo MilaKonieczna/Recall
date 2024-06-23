@@ -56,10 +56,15 @@ class DST : AppCompatActivity() {
         currentSequence = generateRandomSequence(sequenceLength)
         sequenceTextView.text = currentSequence.joinToString(" ")
 
+        sequenceHandler.postDelayed({
+            sequenceTextView.text = ""
+            enableNumberButtons(true)
+        }, 2000)
+
         userInput.clear()
         enterTextView.text = ""
 
-        numberButtons.forEach { it.isEnabled = true }
+        enableNumberButtons(false)
     }
 
     private fun generateRandomSequence(length: Int): MutableList<Int> {
@@ -81,7 +86,7 @@ class DST : AppCompatActivity() {
     }
 
     private fun checkUserInput() {
-        numberButtons.forEach { it.isEnabled = false }
+        enableNumberButtons(false)
 
         if (userInput == currentSequence) {
             totalCorrect++
@@ -103,5 +108,9 @@ class DST : AppCompatActivity() {
         }
         startActivity(intent)
         finish()
+    }
+
+    private fun enableNumberButtons(enable: Boolean) {
+        numberButtons.forEach { it.isEnabled = enable }
     }
 }

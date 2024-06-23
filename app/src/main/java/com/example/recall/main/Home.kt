@@ -19,7 +19,6 @@ class Home : AppCompatActivity() {
     private lateinit var mediaPlayerST: MediaPlayer
     private lateinit var mediaPlayerRES: MediaPlayer
 
-
     private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,10 +35,30 @@ class Home : AppCompatActivity() {
         val fragmentToLoad = intent.getStringExtra("fragmentToLoad")
         if (fragmentToLoad != null) {
             when (fragmentToLoad) {
-                "StartSST" -> replaceFragment(StartSST())
+                "StartSST" -> {
+                    replaceFragment(StartSST())
+                    binding.menu.selectedItemId = R.id.nav_sst
+                }
+                "StartDST" -> {
+                    replaceFragment(StartDST())
+                    binding.menu.selectedItemId = R.id.nav_dst
+                }
+                "StartBNT" -> {
+                    replaceFragment(StartBNT())
+                    binding.menu.selectedItemId = R.id.nav_bnt
+                }
+                "StartST" -> {
+                    replaceFragment(StartST())
+                    binding.menu.selectedItemId = R.id.nav_st
+                }
+                "PastResults" -> {
+                    replaceFragment(PastResults())
+                    binding.menu.selectedItemId = R.id.nav_res
+                }
             }
         } else {
             replaceFragment(StartSST())
+            binding.menu.selectedItemId = R.id.nav_sst
         }
 
         binding.menu.setOnItemSelectedListener { menuItem ->
@@ -60,8 +79,10 @@ class Home : AppCompatActivity() {
                     replaceFragment(StartST())
                     mediaPlayerST.start()
                 }
-                R.id.nav_res -> {replaceFragment(PastResults())
-                mediaPlayerRES.start()}
+                R.id.nav_res -> {
+                    replaceFragment(PastResults())
+                    mediaPlayerRES.start()
+                }
             }
             true
         }
@@ -79,5 +100,6 @@ class Home : AppCompatActivity() {
         mediaPlayerDST.release()
         mediaPlayerSST.release()
         mediaPlayerST.release()
+        mediaPlayerRES.release()
     }
 }
