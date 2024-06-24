@@ -264,5 +264,9 @@
     <string name="_7">7</string>
     <string name="_8">8</string>
     <string name="_9">9</string>
+    <string name="BNTdesc">The Boston Naming Test (BNT) is a well-known neuropsychological assessment used to evaluate an individual\'s ability to name objects, which is an important aspect of language function.</string>
+    <string name="DSTtest">The Digit Span Test is a neuropsychological assessment designed to evaluate an individual\'s working memory capacity and attention. This test is commonly used in various settings, including clinical, educational, and research environments, to assess cognitive function and diagnose potential impairments.</string>
+    <string name="SSTdesc">The Spatial Span Test is a neuropsychological assessment designed to measure an individual\'s visuospatial working memory and attention. This test evaluates how well a person can remember and reproduce sequences of spatial locations. </string>
+    <string name="STdesc">The Stroop Test is a cognitive assessment tool used to evaluate an individual\'s ability to manage cognitive interference, attention, and processing speed. It measures how well a person can control their automatic responses and focus on specific tasks, which is important for executive functioning.</string>
 
 </resources>
